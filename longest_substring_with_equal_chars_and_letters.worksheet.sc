@@ -1,7 +1,8 @@
 def longestSubStringEqualCharNums(arr: String): String = {
     // the idea is to signify char with +1 and num with -1
     // keep summing while iterating the string and store new sums to a map
-    // and when same sun is seen again signifying that  
+    // and when same sum is seen again signifying that a total of 0 has been summed (equal char and sum)
+    // then store the max len start and end index
     val sumMap = scala.collection.mutable.HashMap.empty[Int, Int]
     sumMap(0) = -1
     var currSum = 0
