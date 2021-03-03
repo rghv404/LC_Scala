@@ -1,3 +1,4 @@
+import scala.collection.mutable.ArrayBuffer
 // brute force check of all possible sub strings
 def wordBreak(s: String, wordDict: List[String]): Boolean = {
     val wordSet = wordDict.toSet
@@ -17,6 +18,24 @@ def wordBreak(s: String, wordDict: List[String]): Boolean = {
     check(0, true)
 }
 
+def wordBreakDP(s: String, wordDict: List[String]): Boolean = {
+    val dp = (0 until s.length()+1).map(_ => false).toBuffer
+    dp(0) = true
+    val wordSet = wordDict.toSet
+    def loop(j:Int, end: Int): Int = {
+        if (j < end && dp(j) && wordSet.contains(s.substring(j, end))){
+                dp(end) = true
+                end
+        }
+        else if (j < end) loop(j + 1, end)
+        else return -1
+    }
+
+    for(i <- 1 until s.length() + 1)
+        loop(0, i)
+    println(dp)
+    dp(s.length())
+}
 
 val testStr = "timeistime"
 val wordDict = List("time", "is")
@@ -24,3 +43,7 @@ wordBreak(testStr, wordDict)
 
 val wordDict2 = List("time", "i")
 wordBreak(testStr, wordDict2)
+
+val testStr2 = "abcd"
+
+wordBreakDP(testStr2, wordDict)
