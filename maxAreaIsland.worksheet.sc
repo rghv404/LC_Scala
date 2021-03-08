@@ -59,3 +59,6 @@ Solution.maxAreaOfIsland(island3)
 Solution.maxAreaOfIsland_2(island4)
 
 // a lsightly better solution w/o incrementing a mutable var area and w/o mutating the input grid
+
+val lst = Vector("hello", "heman")
+lst.filter(s => s.startsWith("hel"))
